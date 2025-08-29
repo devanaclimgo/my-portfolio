@@ -1,11 +1,11 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useState } from 'react'
 import { content } from '../../data'
+import { useLanguage } from '../contexts/LanguageContext'
 
 export default function Footer() {
-  const [language] = useState<'en' | 'pt'>('en')
+  const { language } = useLanguage()
   const t = content[language]
 
   return (
