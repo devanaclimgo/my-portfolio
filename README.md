@@ -278,6 +278,6 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 **Made with ❤️ by Ana Clara | 2025**
 
-[🌐 Portfolio](#) • [💼 LinkedIn](https://www.linkedin.com/in/ana-clara-gomes-48b83b224/) • [🐙 GitHub](https://github.com/devanaclimgo) • [�� Email](anaclimgo@gmail.com)
+[🌐 Portfolio](https://my-portfolio-gamma-five-87.vercel.app/) • [💼 LinkedIn](https://www.linkedin.com/in/ana-clara-gomes-48b83b224/) • [🐙 GitHub](https://github.com/devanaclimgo) • [�� Email](anaclimgo@gmail.com)
 
 </div>
