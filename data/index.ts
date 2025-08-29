@@ -8,7 +8,7 @@ export const content = {
     },
     hero: {
       greeting: "Hi, I'm Ana",
-      subtitle: "Frontend Developer specializing in Next.js, React & Tailwind CSS",
+      subtitle: "Fullstack Developer specializing in Ruby on Rails",
       seeProjects: "See Projects",
       downloadCV: "Download CV",
     },
@@ -20,7 +20,7 @@ export const content = {
     about: {
       title: "About Me",
       description:
-        "Passionate frontend developer with a love for creating beautiful, interactive web experiences. I enjoy working with modern technologies and bringing creative ideas to life through code.",
+        "Passionate fullstack developer with a love for creating beautiful, interactive web experiences. I enjoy working with modern technologies and bringing creative ideas to life through code.",
     },
     experience: {
       title: "Experience",
@@ -39,7 +39,7 @@ export const content = {
     },
     hero: {
       greeting: "Oi, eu sou a Ana",
-      subtitle: "Desenvolvedora Frontend especializada em Next.js, React & Tailwind CSS",
+      subtitle: "Desenvolvedora Fullstack especializada em Ruby on Rails",
       seeProjects: "Ver Projetos",
       downloadCV: "Baixar CV",
     },
@@ -51,7 +51,7 @@ export const content = {
     about: {
       title: "Sobre Mim",
       description:
-        "Desenvolvedora frontend apaixonada por criar experiências web bonitas e interativas. Gosto de trabalhar com tecnologias modernas e dar vida a ideias criativas através do código.",
+        "Desenvolvedora fullstack apaixonada por criar experiências web bonitas e interativas. Gosto de trabalhar com tecnologias modernas e dar vida a ideias criativas através do código.",
     },
     experience: {
       title: "Experiência",
@@ -74,6 +74,14 @@ export const techStack = [
   "JavaScript",
   "HTML5",
   "CSS3",
+  "Docker",
+  "AWS",
+  "SQL & Databases",
+  "Node.js",
+  "SOLID",
+  "REST API",
+  "JWT",
+  "CRUD"
 ]
 
 
