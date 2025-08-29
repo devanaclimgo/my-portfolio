@@ -87,12 +87,12 @@ export const techStack = [
 
 export const projects = [
   {
-    title: "E-commerce Platform",
-    description: "Modern e-commerce solution with advanced filtering and payment integration",
-    image: "/modern-ecommerce-website.png",
-    tech: ["Next.js", "Tailwind", "Stripe"],
-    github: "#",
-    demo: "#",
+    title: "Trilha Clara - Waitlist Landing Page",
+    description: "The waitlist landing page where interested students can sign up to be notified when the full platform Trilha Clara launches, designed to help students organize their academic studies without complications",
+    image: "/public/Landing-Page-Trilha-Clara.png",
+    tech: ["Next.js", "Tailwind", "React.js", "Formspree"],
+    github: "https://github.com/devanaclimgo/trilha-clara",
+    demo: "https://trilha-clara.vercel.app/",
   },
   {
     title: "Task Management App",
