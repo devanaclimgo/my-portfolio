@@ -2,13 +2,14 @@
 
 import { motion, useInView } from 'framer-motion'
 import { Github, ExternalLink } from 'lucide-react'
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import { content, projects } from '../../data'
 import { Button } from './ui/button'
 import { Card } from './ui/card'
+import { useLanguage } from '../contexts/LanguageContext'
 
 export default function Projects() {
-  const [language] = useState<'en' | 'pt'>('en')
+  const { language } = useLanguage()
   const t = content[language]
 
   const projectsRef = useRef(null)
@@ -81,26 +82,38 @@ export default function Projects() {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          className="border-[#8A6CFF] text-[#8A6CFF] hover:bg-[#8A6CFF] hover:text-white bg-transparent hover:shadow-lg hover:shadow-[#8A6CFF]/25 transition-all duration-300"
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
                         >
-                          <Github className="w-4 h-4 mr-2" />
-                          {t.projects.viewCode}
-                        </Button>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="border-[#8A6CFF] text-[#8A6CFF] hover:bg-[#8A6CFF] hover:text-white bg-transparent hover:shadow-lg hover:shadow-[#8A6CFF]/25 transition-all duration-300"
+                          >
+                            <Github className="w-4 h-4 mr-2" />
+                            {t.projects.viewCode}
+                          </Button>
+                        </a>
                       </motion.div>
                       <motion.div
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
-                        <Button
-                          size="sm"
-                          className="bg-gradient-to-r from-[#3B2BFF] to-[#8A6CFF] text-white hover:shadow-lg hover:shadow-[#8A6CFF]/25 transition-all duration-300"
+                        <a
+                          href={project.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
                         >
-                          <ExternalLink className="w-4 h-4 mr-2" />
-                          {t.projects.liveDemo}
-                        </Button>
+                          <Button
+                            size="sm"
+                            className="bg-gradient-to-r from-[#3B2BFF] to-[#8A6CFF] text-white hover:shadow-lg hover:shadow-[#8A6CFF]/25 transition-all duration-300"
+                          >
+                            <ExternalLink className="w-4 h-4 mr-2" />
+                            {t.projects.liveDemo}
+                          </Button>
+                        </a>
                       </motion.div>
                     </div>
                   </div>
