@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import React, { Suspense } from 'react'
+import React, { Suspense, useState, useEffect } from 'react'
 import { Button } from './ui/button'
 import { Download } from 'lucide-react'
 import { content } from '../../data'
@@ -11,8 +11,21 @@ import Spline from '@splinetool/react-spline'
 export default function Hero() {
   const { language } = useLanguage()
   const t = content[language]
+  const [isDesktop, setIsDesktop] = useState(false)
+  const [isHoveringContent, setIsHoveringContent] = useState(false)
 
   console.log('Hero component - Current language:', language)
+
+  useEffect(() => {
+    const checkDesktop = () => {
+      setIsDesktop(window.innerWidth >= 1024)
+    }
+
+    checkDesktop()
+    window.addEventListener('resize', checkDesktop)
+
+    return () => window.removeEventListener('resize', checkDesktop)
+  }, [])
 
   const handleResumeDownload = () => {
     // Debug: Log the language when download is clicked
@@ -48,7 +61,7 @@ export default function Hero() {
     <div>
       <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
         {/* Spline Background - Full Screen */}
-        <div id='hero' className="absolute inset-0 w-full h-full z-0 pointer-events-none">
+        <div id="hero" className="absolute inset-0 w-full h-full z-0">
           <Suspense
             fallback={
               <div className="w-full h-full bg-gradient-to-br from-[#0B1220] via-[#1a1f3a] to-[#0B1220] flex items-center justify-center">
@@ -60,13 +73,21 @@ export default function Hero() {
           >
             <Spline
               scene="https://prod.spline.design/w8uMKvrWl8zmzzyv/scene.splinecode"
-              className="w-full h-full pointer-events-none"
+              className={`w-full h-full transition-opacity duration-300 ${
+                isDesktop && !isHoveringContent
+                  ? 'pointer-events-auto'
+                  : 'pointer-events-none'
+              }`}
             />
           </Suspense>
         </div>
 
         {/* Content Overlay - Centered */}
-        <div className="relative z-10 max-w-4xl mx-auto text-center">
+        <div
+          className="relative z-10 max-w-4xl mx-auto text-center"
+          onMouseEnter={() => setIsHoveringContent(true)}
+          onMouseLeave={() => setIsHoveringContent(false)}
+        >
           <motion.div
             className="relative p-8 rounded-2xl backdrop-blur-sm bg-black/20 border border-white/10"
             initial={{ opacity: 0, y: 30 }}
