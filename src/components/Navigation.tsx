@@ -5,11 +5,36 @@ import { Button } from './ui/button'
 import { Download, Github, Linkedin, Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import { content } from '../../data'
+import { useLanguage } from '../contexts/LanguageContext'
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [language, setLanguage] = useState<'en' | 'pt'>('en')
+  const { language, setLanguage } = useLanguage()
   const t = content[language]
+
+  const handleResumeDownload = () => {
+    const link = document.createElement('a')
+    link.href = '/Ana_Gomes-Resume.pdf' 
+    link.download =
+      language === 'en'
+        ? 'Ana_Gomes-Resume.pdf'
+        : 'Ana_Gomes-Curriculo.pdf'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      const offsetTop = element.offsetTop - 80
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth',
+      })
+    }
+    setIsMenuOpen(false)
+  }
 
   return (
     <motion.nav
@@ -26,7 +51,10 @@ export default function Navigation() {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
-            <a className="w-10 h-10 rounded-full bg-gradient-to-r from-[#3B2BFF] to-[#8A6CFF] flex items-center justify-center font-bold text-white hover:shadow-lg hover:shadow-[#8A6CFF]/25 transition-all duration-300" href='#'>
+            <a
+              className="w-10 h-10 rounded-full bg-gradient-to-r from-[#3B2BFF] to-[#8A6CFF] flex items-center justify-center font-bold text-white hover:shadow-lg hover:shadow-[#8A6CFF]/25 transition-all duration-300"
+              href="#"
+            >
               AG
             </a>
           </motion.div>
@@ -34,30 +62,30 @@ export default function Navigation() {
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
-              <motion.a
-                href="#projects"
+              <motion.button
+                onClick={() => scrollToSection('projects')}
                 className="hover:text-[#8A6CFF] transition-colors duration-200 relative group"
                 whileHover={{ y: -2 }}
               >
                 {t.nav.projects}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#8A6CFF] to-[#FF85D0] group-hover:w-full transition-all duration-300"></span>
-              </motion.a>
-              <motion.a
-                href="#about"
+              </motion.button>
+              <motion.button
+                onClick={() => scrollToSection('about')}
                 className="hover:text-[#8A6CFF] transition-colors duration-200 relative group"
                 whileHover={{ y: -2 }}
               >
                 {t.nav.about}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#8A6CFF] to-[#FF85D0] group-hover:w-full transition-all duration-300"></span>
-              </motion.a>
-              <motion.a
-                href="#experience"
+              </motion.button>
+              <motion.button
+                onClick={() => scrollToSection('experience')}
                 className="hover:text-[#8A6CFF] transition-colors duration-200 relative group"
                 whileHover={{ y: -2 }}
               >
                 {t.nav.experience}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#8A6CFF] to-[#FF85D0] group-hover:w-full transition-all duration-300"></span>
-              </motion.a>
+              </motion.button>
             </div>
           </div>
 
@@ -68,6 +96,7 @@ export default function Navigation() {
                 variant="outline"
                 size="sm"
                 className="border-[#8A6CFF] text-[#8A6CFF] hover:bg-[#8A6CFF] hover:text-white bg-transparent hover:shadow-lg hover:shadow-[#8A6CFF]/25 transition-all duration-300"
+                onClick={handleResumeDownload}
               >
                 <Download className="w-4 h-4 mr-2" />
                 {t.nav.resume}
@@ -134,29 +163,30 @@ export default function Navigation() {
           className="md:hidden bg-black/50 backdrop-blur-md border-t border-white/10"
         >
           <div className="px-2 pt-2 pb-3 space-y-1">
-            <a
-              href="#projects"
-              className="block px-3 py-2 text-white hover:text-[#8A6CFF]"
+            <button
+              onClick={() => scrollToSection('projects')}
+              className="block px-3 py-2 text-white hover:text-[#8A6CFF] text-left w-full"
             >
               {t.nav.projects}
-            </a>
-            <a
-              href="#about"
-              className="block px-3 py-2 text-white hover:text-[#8A6CFF]"
+            </button>
+            <button
+              onClick={() => scrollToSection('about')}
+              className="block px-3 py-2 text-white hover:text-[#8A6CFF] text-left w-full"
             >
               {t.nav.about}
-            </a>
-            <a
-              href="#experience"
-              className="block px-3 py-2 text-white hover:text-[#8A6CFF]"
+            </button>
+            <button
+              onClick={() => scrollToSection('experience')}
+              className="block px-3 py-2 text-white hover:text-[#8A6CFF] text-left w-full"
             >
               {t.nav.experience}
-            </a>
+            </button>
             <div className="px-3 py-2 flex items-center space-x-4">
               <Button
                 variant="outline"
                 size="sm"
                 className="border-[#8A6CFF] text-[#8A6CFF] bg-transparent"
+                onClick={handleResumeDownload}
               >
                 <Download className="w-4 h-4 mr-2" />
                 {t.nav.resume}
