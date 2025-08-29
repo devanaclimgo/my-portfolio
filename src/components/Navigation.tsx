@@ -12,13 +12,28 @@ export default function Navigation() {
   const { language, setLanguage } = useLanguage()
   const t = content[language]
 
+  console.log('Navigation component - Current language:', language)
+
   const handleResumeDownload = () => {
+    console.log('Navigation download clicked - Language:', language)
+
     const link = document.createElement('a')
-    link.href = '/Ana_Gomes-Resume.pdf' 
-    link.download =
-      language === 'en'
-        ? 'Ana_Gomes-Resume.pdf'
-        : 'Ana_Gomes-Curriculo.pdf'
+    if (language === 'pt') {
+      link.href = '/Ana_Gomes-Curriculo.pdf'
+      link.download = 'Ana_Gomes-Curriculo.pdf'
+      console.log(
+        'Navigation downloading Portuguese version:',
+        '/Ana_Gomes-Curriculo.pdf',
+      )
+    } else {
+      link.href = '/Ana_Gomes-Resume.pdf'
+      link.download = 'Ana_Gomes-Resume.pdf'
+      console.log(
+        'Navigation downloading English version:',
+        '/Ana_Gomes-Resume.pdf',
+      )
+    }
+
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)
@@ -127,7 +142,16 @@ export default function Navigation() {
             </div>
 
             <motion.button
-              onClick={() => setLanguage(language === 'en' ? 'pt' : 'en')}
+              onClick={() => {
+                const newLanguage = language === 'en' ? 'pt' : 'en'
+                console.log(
+                  'Language switching from',
+                  language,
+                  'to',
+                  newLanguage,
+                )
+                setLanguage(newLanguage)
+              }}
               className="text-sm px-2 py-1 rounded border border-white/20 hover:bg-white/10 transition-colors"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -192,7 +216,16 @@ export default function Navigation() {
                 {t.nav.resume}
               </Button>
               <button
-                onClick={() => setLanguage(language === 'en' ? 'pt' : 'en')}
+                onClick={() => {
+                  const newLanguage = language === 'en' ? 'pt' : 'en'
+                  console.log(
+                    'Mobile language switching from',
+                    language,
+                    'to',
+                    newLanguage,
+                  )
+                  setLanguage(newLanguage)
+                }}
                 className="text-sm px-2 py-1 rounded border border-white/20"
               >
                 {language === 'en' ? '🇧🇷 PT' : '🇬🇧 EN'}

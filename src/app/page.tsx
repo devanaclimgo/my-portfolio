@@ -15,7 +15,7 @@ import { ShootingStarsAndStarsBackgroundDemo } from '@/components/ShootingStarsA
 export default function Portfolio() {
   return (
     <LanguageProvider>
-      <div className="min-h-screen bg-gradient-to-br from-[#0B1220] via-[#1a1f3a] to-[#0B1220] text-white overflow-x-hidden relative">
+      <div className="min-h-screen bottom-0 left-0 right-0 h-24 bg-[#000000] text-white overflow-x-hidden relative">
         {/* Animated Stars Background */}
         <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
           <ShootingStarsAndStarsBackgroundDemo />
