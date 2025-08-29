@@ -10,29 +10,33 @@ import Footer from '@/components/Footer'
 import { LanguageProvider } from '@/contexts/LanguageContext'
 
 import '../styles/globals.css'
+import { ShootingStarsAndStarsBackgroundDemo } from '@/components/ShootingStarsAndStarsBackgroundDemo'
 
 export default function Portfolio() {
   return (
     <LanguageProvider>
-      <div className="min-h-screen bg-gradient-to-br from-[#0B1220] via-[#1a1f3a] to-[#0B1220] text-white overflow-x-hidden">
+      <div className="min-h-screen bg-gradient-to-br from-[#0B1220] via-[#1a1f3a] to-[#0B1220] text-white overflow-x-hidden relative">
         {/* Animated Stars Background */}
-        <div className="fixed inset-0 overflow-hidden pointer-events-none">
-          <div className="stars absolute inset-0 bg-[radial-gradient(2px_2px_at_20px_30px,#eee,transparent),radial-gradient(2px_2px_at_40px_70px,rgba(255,255,255,0.8),transparent),radial-gradient(1px_1px_at_90px_40px,#fff,transparent),radial-gradient(1px_1px_at_130px_80px,rgba(255,255,255,0.6),transparent),radial-gradient(2px_2px_at_160px_30px,#ddd,transparent)] bg-[length:200px_100px] animate-pulse"></div>
+        <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+          <ShootingStarsAndStarsBackgroundDemo />
         </div>
 
-        <Navigation />
+        {/* Content with proper z-index */}
+        <div className="relative z-10">
+          <Navigation />
 
-        <Hero />
+          <Hero />
 
-        <TechStackCarousel />
+          <TechStackCarousel />
 
-        <Projects />
+          <Projects />
 
-        <AboutSection />
+          <AboutSection />
 
-        <ExperienceSection />
+          <ExperienceSection />
 
-        <Footer />
+          <Footer />
+        </div>
       </div>
     </LanguageProvider>
   )

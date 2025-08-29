@@ -9,14 +9,14 @@ export default function Footer() {
   const t = content[language]
 
   return (
-    <div>
-      {' '}
+    <div className="relative z-20">
       <motion.footer
-        className="py-12 px-4 sm:px-6 lg:px-8 border-t border-white/10"
+        className="py-12 px-4 sm:px-6 lg:px-8 border-t border-white/10 relative z-20"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
+        style={{ minHeight: '200px' }}
       >
         <div className="max-w-7xl mx-auto text-center">
           <motion.h3

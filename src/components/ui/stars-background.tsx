@@ -1,11 +1,6 @@
 'use client'
 import { cn } from '@/lib/utils'
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  useCallback,
-} from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 
 interface StarProps {
   x: number
@@ -136,7 +131,11 @@ export const StarsBackground: React.FC<StarBackgroundProps> = ({
   return (
     <canvas
       ref={canvasRef}
-      className={cn('h-full w-full absolute inset-0', className)}
+      className={cn(
+        'h-full w-full absolute inset-0 pointer-events-none',
+        className,
+      )}
+      style={{ zIndex: 0 }}
     />
   )
 }

@@ -13,15 +13,15 @@ export default function AboutSection() {
   const aboutInView = useInView(aboutRef, { once: true, margin: '-100px' })
 
   return (
-    <div>
-      {' '}
+    <div className="relative z-20">
       <motion.section
         id="about"
         ref={aboutRef}
-        className="py-20 px-4 sm:px-6 lg:px-8"
+        className="py-20 px-4 sm:px-6 lg:px-8 relative z-20"
         initial={{ opacity: 0 }}
         animate={aboutInView ? { opacity: 1 } : { opacity: 0 }}
         transition={{ duration: 0.8 }}
+        style={{ minHeight: '400px' }}
       >
         <div className="max-w-4xl mx-auto text-center">
           <motion.h2
