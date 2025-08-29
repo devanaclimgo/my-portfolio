@@ -40,14 +40,65 @@ export default function Navigation() {
   }
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      const offsetTop = element.offsetTop - 80
-      window.scrollTo({
-        top: offsetTop,
-        behavior: 'smooth',
-      })
-    }
+    console.log('Attempting to scroll to section:', sectionId)
+
+    setTimeout(() => {
+      const element = document.getElementById(sectionId)
+      if (element) {
+        console.log('Element found:', element)
+        const offsetTop = element.offsetTop - 80
+        console.log('Scrolling to position:', offsetTop)
+
+        try {
+          element.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+          })
+          setTimeout(() => {
+            window.scrollBy(0, -80)
+          }, 100)
+        } catch (error) {
+          console.log('Smooth scroll failed, using instant scroll:', error)
+          element.scrollIntoView({ block: 'start' })
+          setTimeout(() => {
+            window.scrollBy(0, -80)
+          }, 100)
+        }
+      } else {
+        console.error('Section not found:', sectionId)
+        const sections = document.querySelectorAll('section, [id]')
+        console.log(
+          'Available sections:',
+          Array.from(sections).map((s) => ({
+            id: s.id,
+            className: s.className,
+          })),
+        )
+
+        const altElement =
+          document.querySelector(`[id*="${sectionId}"]`) ||
+          document.querySelector(`[class*="${sectionId}"]`)
+        if (altElement && altElement instanceof HTMLElement) {
+          console.log('Alternative element found:', altElement)
+          altElement.scrollIntoView({ block: 'start' })
+          setTimeout(() => {
+            window.scrollBy(0, -80)
+            const finalPosition = altElement.offsetTop - 80
+            window.scrollTo(0, finalPosition)
+          }, 100)
+        } else {
+          console.log('No elements found, using approximate scroll')
+          const approximateScroll = () => {
+            const currentScroll =
+              window.pageYOffset || document.documentElement.scrollTop
+            const targetScroll = currentScroll + 500
+            window.scrollTo(0, targetScroll)
+          }
+          approximateScroll()
+        }
+      }
+    }, 100)
+
     setIsMenuOpen(false)
   }
 
@@ -65,6 +116,7 @@ export default function Navigation() {
             className="flex-shrink-0"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => scrollToSection('hero')}
           >
             <a
               className="w-10 h-10 rounded-full bg-gradient-to-r from-[#3B2BFF] to-[#8A6CFF] flex items-center justify-center font-bold text-white hover:shadow-lg hover:shadow-[#8A6CFF]/25 transition-all duration-300"

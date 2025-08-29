@@ -48,7 +48,7 @@ export default function Hero() {
     <div>
       <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
         {/* Spline Background - Full Screen */}
-        <div className="absolute inset-0 w-full h-full z-0">
+        <div id='hero' className="absolute inset-0 w-full h-full z-0 pointer-events-none">
           <Suspense
             fallback={
               <div className="w-full h-full bg-gradient-to-br from-[#0B1220] via-[#1a1f3a] to-[#0B1220] flex items-center justify-center">
@@ -60,7 +60,7 @@ export default function Hero() {
           >
             <Spline
               scene="https://prod.spline.design/w8uMKvrWl8zmzzyv/scene.splinecode"
-              className="w-full h-full"
+              className="w-full h-full pointer-events-none"
             />
           </Suspense>
         </div>
