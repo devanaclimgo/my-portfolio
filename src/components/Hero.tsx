@@ -1,15 +1,39 @@
-"use client"
+'use client'
 
 import { motion } from 'framer-motion'
-import React, { Suspense, useState } from 'react'
+import React, { Suspense } from 'react'
 import { Button } from './ui/button'
 import { Download } from 'lucide-react'
 import { content } from '../../data'
+import { useLanguage } from '../contexts/LanguageContext'
 
 export default function Hero() {
-  const [language] = useState<'en' | 'pt'>('en')
+  const { language } = useLanguage()
   const t = content[language]
-  
+
+  const handleResumeDownload = () => {
+    const link = document.createElement('a')
+    link.href = '/Ana_Gomes-Resume.pdf' 
+    link.download =
+      language === 'en'
+        ? 'Ana_Gomes-Resume.pdf'
+        : 'Ana_Gomes-Curriculo.pdf'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
+
+  const scrollToProjects = () => {
+    const element = document.getElementById('projects')
+    if (element) {
+      const offsetTop = element.offsetTop - 80
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth',
+      })
+    }
+  }
+
   return (
     <div>
       {' '}
@@ -50,6 +74,7 @@ export default function Hero() {
                 <Button
                   size="lg"
                   className="bg-gradient-to-r from-[#3B2BFF] to-[#8A6CFF] hover:from-[#8A6CFF] hover:to-[#FF85D0] text-white border-0 hover:shadow-lg hover:shadow-[#8A6CFF]/25 transition-all duration-300"
+                  onClick={scrollToProjects}
                 >
                   {t.hero.seeProjects}
                 </Button>
@@ -62,6 +87,7 @@ export default function Hero() {
                   variant="outline"
                   size="lg"
                   className="border-[#8A6CFF] text-[#8A6CFF] hover:bg-[#8A6CFF] hover:text-white bg-transparent hover:shadow-lg hover:shadow-[#8A6CFF]/25 transition-all duration-300"
+                  onClick={handleResumeDownload}
                 >
                   <Download className="w-4 h-4 mr-2" />
                   {t.hero.downloadCV}
