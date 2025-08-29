@@ -103,12 +103,12 @@ export const projects = [
     demo: "https://insu-check.vercel.app/",
   },
   {
-    title: "Portfolio Website",
-    description: "Creative portfolio with 3D elements and smooth animations",
-    image: "/creative-portfolio-website.png",
-    tech: ["Three.js", "React", "Framer Motion"],
-    github: "#",
-    demo: "#",
+    title: "Coin Monitor",
+    description: "A real-time currency monitoring web application built with Ruby on Rails, featuring live exchange rates, interactive charts, and a beautiful glassmorphism UI design",
+    image: "/Coin-Monitor.png",
+    tech: ["Ruby on Rails", "Ruby", "SQLite", "PostgreSQL", "Puma", "Solid Cache", "Solid Queue", "CSS", "Chart.js", "Javascript", "HTML5/ERB", "AwesomeAPI"],
+    github: "https://github.com/devanaclimgo/coin__monitor",
+    demo: "https://coin-monitor-kpk2.onrender.com/",
   },
   {
     title: "Weather Dashboard",
