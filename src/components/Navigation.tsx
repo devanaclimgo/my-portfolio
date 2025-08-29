@@ -76,18 +76,22 @@ export default function Navigation() {
 
             <div className="flex items-center space-x-2">
               <motion.a
-                href="#"
+                href="https://github.com/devanaclimgo"
                 className="text-white hover:text-[#8A6CFF] transition-colors"
                 whileHover={{ scale: 1.2, rotate: 5 }}
                 whileTap={{ scale: 0.9 }}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <Github className="w-5 h-5" />
               </motion.a>
               <motion.a
-                href="#"
+                href="https://www.linkedin.com/in/ana-clara-gomes-48b83b224/"
                 className="text-white hover:text-[#8A6CFF] transition-colors"
                 whileHover={{ scale: 1.2, rotate: -5 }}
                 whileTap={{ scale: 0.9 }}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <Linkedin className="w-5 h-5" />
               </motion.a>
