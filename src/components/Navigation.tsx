@@ -26,9 +26,9 @@ export default function Navigation() {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
-            <div className="w-10 h-10 rounded-full bg-gradient-to-r from-[#3B2BFF] to-[#8A6CFF] flex items-center justify-center font-bold text-white hover:shadow-lg hover:shadow-[#8A6CFF]/25 transition-all duration-300">
+            <a className="w-10 h-10 rounded-full bg-gradient-to-r from-[#3B2BFF] to-[#8A6CFF] flex items-center justify-center font-bold text-white hover:shadow-lg hover:shadow-[#8A6CFF]/25 transition-all duration-300" href='#'>
               AG
-            </div>
+            </a>
           </motion.div>
 
           {/* Desktop Navigation */}
