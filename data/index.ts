@@ -111,11 +111,11 @@ export const projects = [
     demo: "https://coin-monitor-kpk2.onrender.com/",
   },
   {
-    title: "Weather Dashboard",
-    description: "Beautiful weather app with location-based forecasts and charts",
-    image: "/weather-dashboard-app.png",
-    tech: ["React", "Chart.js", "API"],
-    github: "#",
-    demo: "#",
+    title: "iPhone 15 Pro Website Clone",
+    description: "A stunning clone of Apple's iPhone 15 Pro website built with React and cutting-edge web technologies. This immersive experience features: silky GSAP animations, interactive 3D phone viewer (with color/size toggles), video carousel and fully responsive design",
+    image: "/Apple-Website.png",
+    tech: ["React", "Three.js", "GSAP", "TailwindCSS", "Sentry"],
+    github: "https://github.com/devanaclimgo/AppleWebsite",
+    demo: "https://apple-website-ashy-eta.vercel.app/",
   },
 ]
