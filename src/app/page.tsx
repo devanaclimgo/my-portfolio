@@ -8,6 +8,8 @@ import AboutSection from "@/components/AboutSection"
 import ExperienceSection from "@/components/ExperienceSection"
 import Footer from "@/components/Footer"
 
+import "../styles/globals.css";
+
 export default function Portfolio() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0B1220] via-[#1a1f3a] to-[#0B1220] text-white overflow-x-hidden">
